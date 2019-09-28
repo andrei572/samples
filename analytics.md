@@ -4,7 +4,7 @@ Relativity Analytics are enabled by analytics indexes. Analytics indexes define 
 
 You can automate the creation of Analytics indexes using the Services API or the REST API. Both APIs enable you to create and build new indexes and delete existing indexes. Use the Index Manager REST service for cross-platform and browser-based applications.
 
-After you build the index, you can use it in analytics searches through the Relativity UI or the API. For more information, see [AnalyticsSearch](../DTO_reference/AnalyticsSearch/AnalyticsSearch.htm).
+After you build the index, you can use it in analytics searches through the Relativity UI or the API. 
 
 This guide contains the following sections:
 
@@ -24,7 +24,7 @@ To provide your users with an analytics index:
   - Create the index.
   - Submit the index job to populate and build the index.
 
-Note that you can also submit a job to incrementally update an existing index. There are different steps required to build a new index versus incrementally updating an existing index, corresponding to the Analytics Index console buttons in the Relation UI and the values defined by the [AnalyticsIndexJobType enum](#Analytic).
+Note that you can also submit a job to incrementally update an existing index. There are different steps required to build a new index versus incrementally updating an existing index, corresponding to the Analytics Index console buttons in the Relation UI and the values defined by the `AnalyticsIndexJobType` enum.
 
 ### Build a new index
 
@@ -45,13 +45,13 @@ Note that you can also submit a job to incrementally update an existing index. T
 
 To create an index:
 
-1.  Like with other Services API interfaces, start by accessing the IIndexManager interface through a client proxy to the Services API and instantiating an IndexManager object. How you build the client proxy depends on how you plan to use it. If you plan to use it in a custom page, event handler, or agent, you use API Helpers:
+1.  Like with other Services API interfaces, start by accessing the `IIndexManager` interface through a client proxy to the Services API and instantiating an `IndexManager` object. How you build the client proxy depends on how you plan to use it. If you plan to use it in a custom page, event handler, or agent, use API Helpers:
 
     ```csharp
     Relativity.Services.Analytics.IIndexManager indexManager = this.Helper.GetServicesManager().CreateProxy<Relativity.Services.Analytics.IIndexManager>(ExecutionIdentity.System);
     ```
 
-    Otherwise, instantiate the IndexManager object using the ServiceFactory class:
+    Otherwise, instantiate the `IndexManager` object using the `ServiceFactory` class:
 
     ```csharp
     String restServerAddress = "http://localhost/relativity.rest/api";
@@ -67,15 +67,13 @@ To create an index:
     Relativity.Services.Analytics.IIndexManager indexManager = _serviceFactory.CreateProxy<IIndexManager>();
     ```
 
-    For more information about creating proxies, see [Connect to the Services API](../Basic_concepts/Connect_to_the_Services_API.htm).
-
-2.  Instantiate a WorkspaceRef object to specify the workspace where you want to create an index:
+2.  Instantiate a `WorkspaceRef` object to specify the workspace where you want to create an index:
 
     ```csharp
     Relativity.Services.Workspace.WorkspaceRef workspaceRef = new Relativity.Services.Workspace.WorkspaceRef() { ArtifactID = 12345 };
     ```
 
-3.  Instantiate the new AnalyticsIndex object with index properties:
+3.  Instantiate the new `AnalyticsIndex` object with index properties:
 
     ```csharp
     Relativity.Services.Analytics.AnalyticsIndex indexDTO = new Relativity.Services.Analytics.AnalyticsIndex()
@@ -102,7 +100,7 @@ To create an index:
     };
     ```
 
-4.  Finally, create the index by calling the CreateAsync() method of the IIndexManager interface and specify the workspace and the index object:
+4.  Finally, create the index by calling the `CreateAsync()` method of the `IIndexManager` interface and specify the workspace and the index object:
 
     ```csharp
     var newAnalyticsIndex = indexManager.CreateAsync(workspaceRef, indexDTO).GetAwaiter().GetResult();
@@ -114,11 +112,11 @@ To create an index:
 
 To submit an index job after you create the index:
 
-1.  Get an instance of the IIndexManager interface as described in the previous section.
+1.  Get an instance of the `IIndexManager` interface as described in the previous section.
 
-2.  Instantiate a WorkspaceRef object to specify the workspace as described in the previous section.
+2.  Instantiate a `WorkspaceRef` object to specify the workspace as described in the previous section.
 
-3.  Define the parameters of the index job using the AnalyticsIndexJobParameters object:
+3.  Define the parameters of the index job using the `AnalyticsIndexJobParameters` object:
 
     ```csharp
     var parameters = new Relativity.Services.Analytics.AnalyticsIndexJobParameters()
@@ -129,7 +127,7 @@ To submit an index job after you create the index:
     };
     ```
 
-4.  Submit the job by calling the SubmitJobAsync() method of the IIndexManager interface and specify the workspace, the index object, and job parameters object:
+4.  Submit the job by calling the `SubmitJobAsync()` method of the `IIndexManager` interface and specify the workspace, the index object, and job parameters object:
 
     ```csharp
      indexManager.SubmitJobAsync(workspaceRef, newAnalyticsIndex, parameters);
@@ -139,7 +137,7 @@ Note that depending on the specified job options, you may need to submit the job
 
 ### Job validation and error states
 
-When submitting an Analytics index job, the job type must be applicable to the current state of the index. For example, the Stop Population job can be run if the index is currently populating. There are many jobs that can be run on an analytics index, and there are many states that an analytics index can be in.
+When submitting an Analytics index job, the job type must be applicable to the current state of the index. For example, the `Stop Population` job can be run if the index is currently populating. There are many jobs that can be run on an analytics index, and there are many states that an analytics index can be in.
 
 The states of an Analytics index are:
 
@@ -164,17 +162,17 @@ The states of an Analytics index are:
   - Error
   - In Automation Mode
 
-**Note:** some of these states overlap with each other and others have various sub-states depending on additional index metadata. For example, many states include an error state like “STATE – 1 or more documents in error status,” where STATE is Populating, Building, etc. There are various error scenarios, for example, when items linked to the index (saved searches, analytics profile) can't be accessed. Regardless of any additional error state, the validator just treats it as "Error" and subsequently only lets you run the two error resolution-type jobs - ResolveErrors or RemoveDocumentsInError.
+**Note:** some of these states overlap with each other and others have various sub-states depending on additional index metadata. For example, many states include an error state like `STATE – 1 or more documents in error status`, where `STATE` is `Populating`, `Building`, etc. There are various error scenarios, for example, when items linked to the index (saved searches, analytics profile) can't be accessed. Regardless of any additional error state, the validator just treats it as `Error` and subsequently only lets you run the two error resolution-type jobs - `ResolveErrors` or `RemoveDocumentsInError`.
 
 ## Delete an index
 
 To delete an index:
 
-1.  Get an instance of the IIndexManager interface as described above.
+1.  Get an instance of the `IIndexManager` interface as described above.
 
 2.  Define a WorkspaceRef to specify the workspace as described above.
 
-3.  Delete the index by calling the DeleteAsync() method of the IIndexManager interface and specify the workspace and the index (as the SearchIndexRef object):
+3.  Delete the index by calling the `DeleteAsync()` method of the `IIndexManager` interface and specify the workspace and the index (as the `SearchIndexRef` object):
 
     ``` csharp
     indexManager.DeleteAsync(workspaceRef, newAnalyticsIndex);
@@ -182,7 +180,7 @@ To delete an index:
 
 ## Index job example
 
-The following is a complete index job example. It demonstrates how to create an index and run a full build with automation. The index is automatically activated and subsequently deleted.
+The following is a complete index job example. It demonstrates how to create an index and run a full build with automation. The index is automatically activated and then deleted.
 
 ``` csharp
 public void UsingTheIndexManagerService()
@@ -238,7 +236,7 @@ public void UsingTheIndexManagerService()
 
 ## Index Manager REST service
 
-The Index Manager service allows you to interact with analytics indexes from browser-based and cross-platform applications. The service provides the same set of operations as the IIndexManager .NET interface - create an index, submit an index job, and delete an index.
+The Index Manager service allows you to interact with analytics indexes from browser-based and cross-platform applications. The service provides the same set of operations as the `IIndexManager` .NET interface - create an index, submit an index job, and delete an index.
 
 ### Create an analytics index with REST
 
@@ -332,7 +330,7 @@ The request payload must include valid JSON representations of the index job par
 }
 ```
 
-The response does not contain any data. Success or failure are indicated by the HTTP status code. For more information, see [HTTP status codes](../../REST_API/HTTP_status_codes.htm).
+The response does not contain any data. 
 
 ### Delete an analytics index with REST
 
@@ -342,4 +340,4 @@ To delete an index, issue a DELETE request to the following Index Manager servic
 /Relativity.REST/api/Relativity.Analytics/workspaces/{workspaceArtifactID|workspaceGUID}/indexes/{indexArtifactID}
 ```
 
-The response does not contain any data. Success or failure are indicated by the HTTP status code.
+The response does not contain any data.
