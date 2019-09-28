@@ -2,7 +2,7 @@
 
 Relativity Analytics are enabled by analytics indexes. Analytics indexes define spatial relationships between documents and concepts measured by their distance in a multidimensional space. For background information about Relativity Analytics indexes, see [Relativity Documentation site](https://help.relativity.com/9.4/Content/Relativity/Analytics/Analytics_indexes.htm).
 
-You can automate the creation of Analytics indexes using the Services API or the REST API. Both APIs enable you to create and build new indexes and delete existing indexes. Use the Index Manager REST service for cross-platform and browser-based applications.
+You can automate the creation of Analytics indexes using the Services API with Relativity .NET SDK or the REST API. Both APIs enable you to create and build new indexes and delete existing indexes. Use the Index Manager REST service to develop cross-platform and browser-based applications.
 
 After you build the index, you can use it in analytics searches through the Relativity UI or the API. 
 
@@ -100,7 +100,7 @@ To create an index:
     };
     ```
 
-4.  Finally, create the index by calling the `CreateAsync()` method of the `IIndexManager` interface and specify the workspace and the index object:
+4.  Finally, create the index by calling the `CreateAsync()` method of the `IIndexManager` interface, and specify the workspace and the index object:
 
     ```csharp
     var newAnalyticsIndex = indexManager.CreateAsync(workspaceRef, indexDTO).GetAwaiter().GetResult();
@@ -339,5 +339,4 @@ To delete an index, issue a DELETE request to the following Index Manager servic
 ```
 /Relativity.REST/api/Relativity.Analytics/workspaces/{workspaceArtifactID|workspaceGUID}/indexes/{indexArtifactID}
 ```
-
 The response does not contain any data.
