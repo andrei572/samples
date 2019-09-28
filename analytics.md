@@ -2,18 +2,17 @@
 
 Relativity Analytics are enabled by analytics indexes. Analytics indexes define spatial relationships between documents and concepts measured by their distance in a multidimensional space. For background information about Relativity Analytics indexes, see [Relativity Documentation site](https://help.relativity.com/9.4/Content/Relativity/Analytics/Analytics_indexes.htm).
 
-You can automate the creation of Analytics indexes using the Services API or the REST API. Both APIs enable you to create and build new indexes and delete existing indexes. You can also use the Index Manager REST service for cross-platform and browser-based applications.
+You can automate the creation of Analytics indexes using the Services API or the REST API. Both APIs enable you to create and build new indexes and delete existing indexes. Use the Index Manager REST service for cross-platform and browser-based applications.
 
 After you build the index, you can use it in analytics searches through the Relativity UI or the API. For more information, see [AnalyticsSearch](../DTO_reference/AnalyticsSearch/AnalyticsSearch.htm).
 
-This page contains the following sections:
+This guide contains the following sections:
 
-  - [Analytics index fundamentals](#Fundamentals)
-  - [Create an index](#Instantiate)
-  - [Submit an index job](#Create2)
-  - [Build Analytics indexes](#Update)
-  - [Automation index job example](#Automati)
-  - [Index Manager REST service](#Index)
+  - [Analytics index fundamentals](#analytics-index-fundamentals)
+  - [Create an index](#create-an-index)
+  - [Submit an index job](#submit-an-index-job)
+  - [Index job example](#index-job-example)
+  - [Index Manager REST service](#index-manager-rest-service)
 
 ## Analytics index fundamentals
 
@@ -43,17 +42,6 @@ Note that you can also submit a job to incrementally update an existing index. T
 5.  **Activate** – make the index available for users.
 
 ## Create an index
-
-The AnalyticsIndex represents the Analytics index. Properties include:
-
-  - **Order** – the order in which the index appears in dropdowns.
-  - **AnalyticsProfile** – the analytics profile used by the index. The value is an AnalyticsProfileRef object.
-  - **AnalyticsServer** – the analytics server to be used to build the index. The value is a ResourceServerRef object.
-  - **Email Notification Recipients** – the list of emails recipients to be notified during index population and build.
-  - **TrainingSet** – the saved search to populate the training set. The value is a SavedSearchRef object.
-  - **SearchableSet** – the saved search to populate the searchable set. The value is a SavedSearchRef object.
-  - **OptimizeTrainingSet** – indicates whether the training set should be optimized (select only conceptually relevant documents from the training set saved search).
-  - **AutomaticallyRemoveEnglishEmailSignaturesAndFooters** – indicates whether email signatures should be automatically removed during index build.
 
 To create an index:
 
@@ -87,30 +75,30 @@ To create an index:
     Relativity.Services.Workspace.WorkspaceRef workspaceRef = new Relativity.Services.Workspace.WorkspaceRef() { ArtifactID = 12345 };
     ```
 
-3.  Instantiate the new AnalyticsIndex object:
+3.  Instantiate the new AnalyticsIndex object with index properties:
 
     ```csharp
     Relativity.Services.Analytics.AnalyticsIndex indexDTO = new Relativity.Services.Analytics.AnalyticsIndex()
     {
-    // The order in which the index appears in dropdowns
-    Order = 999,
+      // The order in which the index appears in dropdowns
+      Order = 999,
 
-    // Define an AnalyticsProfileRef corresponding to the Analytics Profile you want to create the index with
-    AnalyticsProfile = new Relativity.Services.Analytics.AnalyticsProfileRef() { ArtifactID = 12346 },
+      // Define an AnalyticsProfileRef corresponding to the Analytics Profile you want to create the index with
+      AnalyticsProfile = new Relativity.Services.Analytics.AnalyticsProfileRef() { ArtifactID = 12346 },
 
-    // Define a ResourceServerRef corresponding to the Analytics Server you want to create the index on
-    AnalyticsServer = new Relativity.Services.ResourceServer.ResourceServerRef() { ArtifactID = 12347 },
+      // Define a ResourceServerRef corresponding to the Analytics Server you want to create the index on
+      AnalyticsServer = new Relativity.Services.ResourceServer.ResourceServerRef() { ArtifactID = 12347 },
 
-    // Saved Search to be used as a training set for the index. Artifact -1 corresponds to <Default Training Set>
-    TrainingSet = new Relativity.Services.Search.SavedSearchRef() { ArtifactID = -1 },
+      // Saved Search to be used as a training set for the index. Artifact -1 corresponds to <Default Training Set>
+      TrainingSet = new Relativity.Services.Search.SavedSearchRef() { ArtifactID = -1 },
 
-    // Saved Search to be used as a searchable set for the index. Artifact -1 corresponds to <Default Searchable Set>
-    SearchableSet = new Relativity.Services.Search.SavedSearchRef() { ArtifactID = -1 },
+      // Saved Search to be used as a searchable set for the index. Artifact -1 corresponds to <Default Searchable Set>
+      SearchableSet = new Relativity.Services.Search.SavedSearchRef() { ArtifactID = -1 },
 
-    // Other settings
-    OptimizeTrainingSet = true,
-    AutomaticallyRemoveEnglishEmailSignaturesAndFooters = true,
-    EmailNotificationRecipients = new List<string> { "jsmith@mycompany.com", "jdoe@mycompany.com" },
+      // Other settings
+      OptimizeTrainingSet = true,
+      AutomaticallyRemoveEnglishEmailSignaturesAndFooters = true,
+      EmailNotificationRecipients = new List<string> { "jsmith@mycompany.com", "jdoe@mycompany.com" },
     };
     ```
 
@@ -135,9 +123,9 @@ To submit an index job after you create the index:
     ```csharp
     var parameters = new Relativity.Services.Analytics.AnalyticsIndexJobParameters()
     {
-    JobType: "FullBuild",
-    FinalAutomationStage: "ActivateIndex",
-    AutomaticallyRemoveDocumentsInError: true
+      JobType: "FullBuild",
+      FinalAutomationStage: "ActivateIndex",
+      AutomaticallyRemoveDocumentsInError: true
     };
     ```
 
@@ -192,59 +180,59 @@ To delete an index:
     indexManager.DeleteAsync(workspaceRef, newAnalyticsIndex);
     ```
 
-## Automation index job example
+## Index job example
 
-The following is a complete automation index job example. It demonstrates how to create an index and run a full build with automation. The index is automatically activated and subsequently deleted.
+The following is a complete index job example. It demonstrates how to create an index and run a full build with automation. The index is automatically activated and subsequently deleted.
 
 ``` csharp
 public void UsingTheIndexManagerService()
 {
-// Get a reference to the Index Manager
-Relativity.Services.Analytics.IIndexManager indexManager = this.Helper.GetServicesManager().CreateProxy<Relativity.Services.Analytics.IIndexManager>(ExecutionIdentity.System);
+  // Get a reference to the Index Manager
+  Relativity.Services.Analytics.IIndexManager indexManager = this.Helper.GetServicesManager().CreateProxy<Relativity.Services.Analytics.IIndexManager>(ExecutionIdentity.System);
 
-// Define a WorkspaceRef corresponding to the workspace you want to create and index in
-Relativity.Services.Workspace.WorkspaceRef workspaceRef = new Relativity.Services.Workspace.WorkspaceRef() { ArtifactID = 12345 };
+  // Define a WorkspaceRef corresponding to the workspace you want to create and index in
+  Relativity.Services.Workspace.WorkspaceRef workspaceRef = new Relativity.Services.Workspace.WorkspaceRef() { ArtifactID = 12345 };
 
-// Define the new AnalyticsIndex DTO
-Relativity.Services.Analytics.AnalyticsIndex indexDTO = new Relativity.Services.Analytics.AnalyticsIndex()
-{
-// The order in which the index appears in dropdowns
-Order = 999,
+  // Define the new AnalyticsIndex DTO
+  Relativity.Services.Analytics.AnalyticsIndex indexDTO = new Relativity.Services.Analytics.AnalyticsIndex()
+  {
+    // The order in which the index appears in dropdowns
+    Order = 999,
 
-// Define an AnalyticsProfileRef corresponding to the Analytics Profile you want to create the index with
-AnalyticsProfile = new Relativity.Services.Analytics.AnalyticsProfileRef() { ArtifactID = 12346 },
+    // Define an AnalyticsProfileRef corresponding to the Analytics Profile you want to create the index with
+    AnalyticsProfile = new Relativity.Services.Analytics.AnalyticsProfileRef() { ArtifactID = 12346 },
 
-// Define a ResourceServerRef corresponding to the Analytics Server you want to create the index on
-AnalyticsServer = new Relativity.Services.ResourceServer.ResourceServerRef() { ArtifactID = 12347 },
+    // Define a ResourceServerRef corresponding to the Analytics Server you want to create the index on
+    AnalyticsServer = new Relativity.Services.ResourceServer.ResourceServerRef() { ArtifactID = 12347 },
 
-// Saved Search to be used as a training set for the index. Artifact -1 corresponds to <Default Training Set>
-TrainingSet = new Relativity.Services.Search.SavedSearchRef() { ArtifactID = -1 },
+    // Saved Search to be used as a training set for the index. Artifact -1 corresponds to <Default Training Set>
+    TrainingSet = new Relativity.Services.Search.SavedSearchRef() { ArtifactID = -1 },
 
-// Saved Search to be used as a searchable set for the index. Artifact -1 corresponds to <Default Searchable Set>
-SearchableSet = new Relativity.Services.Search.SavedSearchRef() { ArtifactID = -1 },
+    // Saved Search to be used as a searchable set for the index. Artifact -1 corresponds to <Default Searchable Set>
+    SearchableSet = new Relativity.Services.Search.SavedSearchRef() { ArtifactID = -1 },
 
-// Other settings
-OptimizeTrainingSet = true,
-AutomaticallyRemoveEnglishEmailSignaturesAndFooters = true,
-EmailNotificationRecipients = new List<string> { "test1@relativity.com", "test2@relativity.com" },
-};
+    // Other settings
+    OptimizeTrainingSet = true,
+    AutomaticallyRemoveEnglishEmailSignaturesAndFooters = true,
+    EmailNotificationRecipients = new List<string> { "test1@relativity.com", "test2@relativity.com" },
+  };
 
-// Create the new index
-var newAnalyticsIndex = indexManager.CreateAsync(workspaceRef, indexDTO).GetAwaiter().GetResult();
+  // Create the new index
+  var newAnalyticsIndex = indexManager.CreateAsync(workspaceRef, indexDTO).GetAwaiter().GetResult();
 
-// Define the job you want to run
-var parameters = new Relativity.Services.Analytics.AnalyticsIndexJobParameters()
-{
-JobType: "FullBuild",
-FinalAutomationStage: "ActivateIndex",
-AutomaticallyRemoveDocumentsInError: true
-};
+  // Define the job you want to run
+  var parameters = new Relativity.Services.Analytics.AnalyticsIndexJobParameters()
+  {
+    JobType: "FullBuild",
+    FinalAutomationStage: "ActivateIndex",
+    AutomaticallyRemoveDocumentsInError: true
+  };
 
-// Build the index
-indexManager.SubmitJobAsync(workspaceRef, newAnalyticsIndex, parameters);
+  // Build the index
+  indexManager.SubmitJobAsync(workspaceRef, newAnalyticsIndex, parameters);
 
-// Delete the index
-indexManager.DeleteAsync(workspaceRef, newAnalyticsIndex);
+  // Delete the index
+  indexManager.DeleteAsync(workspaceRef, newAnalyticsIndex);
 }
 ```
 
@@ -256,7 +244,7 @@ The Index Manager service allows you to interact with analytics indexes from bro
 
 To create an analytics index from a RESTful application, send a POST request to the following Index Manager service URL. The workspace can be identified by Artifact ID or GUID:
 
-```http
+```
 /Relativity.REST/api/Relativity.Analytics/workspaces/{workspaceArtifactID|workspaceGUID}/indexes
 ```
 
@@ -264,28 +252,28 @@ The request payload must include valid JSON representation of the index object:
 
 ```json
 {
-"index": {
-"Order": 999,
-"AnalyticsProfile": {
-"ArtifactID": 1035661
-},
-"AnalyticsServer": {
-"ArtifactID": 1931274
-},
-"TrainingSet": {
-"ArtifactID": -1
-},
-"SearchableSet": {
-"ArtifactID": -1
-},
-"OptimizeTrainingSet": true,
-"AutomaticallyRemoveEnglishEmailSignaturesAndFooters": true,
-"EmailNotificationRecipients": [
-"test1@relativity.com",
-"test2@relativity.com"
-],
-"Name": "Primary Index"
-}
+  "index": {
+    "Order": 999,
+    "AnalyticsProfile": {
+      "ArtifactID": 1035661
+    },
+    "AnalyticsServer": {
+      "ArtifactID": 1931274
+    },
+    "TrainingSet": {
+      "ArtifactID": -1
+    },
+    "SearchableSet": {
+      "ArtifactID": -1
+    },
+  "OptimizeTrainingSet": true,
+  "AutomaticallyRemoveEnglishEmailSignaturesAndFooters": true,
+  "EmailNotificationRecipients": [
+    "test1@relativity.com",
+    "test2@relativity.com"
+  ],
+  "Name": "Primary Index"
+  }
 }
 ```
 
@@ -293,34 +281,34 @@ The response returns HTTP status code 201 for success and the created index obje
 
 ```json
 {
-"Order": 999,
-"AnalyticsProfile": {
-"ArtifactID": 1035661,
-"Name": "Default"
-},
-"AnalyticsServer": {
-"ArtifactID": 1931274,
-"Name": "Analytics319",
-"ServerType": {
-"ArtifactID": 1015232
-}
-},
-"EmailNotificationRecipients": [
-"test1@relativity.com",
-"test2@relativity.com"
-],
-"TrainingSet": {
-"ArtifactID": -1,
-"Name": "<default training set>"
-},
-"SearchableSet": {
-"ArtifactID": -1,
-"Name": "<default searchable set>"
-},
-"OptimizeTrainingSet": true,
-"AutomaticallyRemoveEnglishEmailSignaturesAndFooters": true,
-"ArtifactID": 1281225,
-"Name": "Primary Index"
+  "Order": 999,
+  "AnalyticsProfile": {
+    "ArtifactID": 1035661,
+    "Name": "Default"
+  },
+  "AnalyticsServer": {
+    "ArtifactID": 1931274,
+    "Name": "Analytics319",
+    "ServerType": {
+      "ArtifactID": 1015232
+    }
+  },
+  "EmailNotificationRecipients": [
+    "test1@relativity.com",
+    "test2@relativity.com"
+  ],
+  "TrainingSet": {
+    "ArtifactID": -1,
+    "Name": "<default training set>"
+  },
+  "SearchableSet": {
+    "ArtifactID": -1,
+    "Name": "<default searchable set>"
+  },
+  "OptimizeTrainingSet": true,
+  "AutomaticallyRemoveEnglishEmailSignaturesAndFooters": true,
+  "ArtifactID": 1281225,
+  "Name": "Primary Index"
 }
 ```
 
@@ -328,7 +316,7 @@ The response returns HTTP status code 201 for success and the created index obje
 
 To submit an analytics index job from a RESTful application, send a POST request to the following Index Manager service URL. The workspace can be identified by Artifact ID or GUID:
 
-```http
+```
 /Relativity.REST/api/Relativity.Analytics/workspaces/{workspaceArtifactID|workspaceGUID}/indexes/{indexArtifactID}/jobs
 ```
 
@@ -336,11 +324,11 @@ The request payload must include valid JSON representations of the index job par
 
 ```json
 {
-"parameters": {
-"JobType": "FullBuild",
-"FinalAutomationStage": "ActivateIndex",
-"AutomaticallyRemoveDocumentsInError": true
-}
+  "parameters": {
+    "JobType": "FullBuild",
+    "FinalAutomationStage": "ActivateIndex",
+    "AutomaticallyRemoveDocumentsInError": true
+  }
 }
 ```
 
@@ -350,7 +338,7 @@ The response does not contain any data. Success or failure are indicated by the 
 
 To delete an index, issue a DELETE request to the following Index Manager service URL. The workspace can be identified by Artifact ID or GUID:
 
-```http
+```
 /Relativity.REST/api/Relativity.Analytics/workspaces/{workspaceArtifactID|workspaceGUID}/indexes/{indexArtifactID}
 ```
 
