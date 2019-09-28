@@ -4,7 +4,7 @@
 
 Written for Tenable Security, 2018.
 
-URL: [https://developer.tenable.com/tenableio/docs](https://developer.tenable.com/tenableio/docs)
+URL: [https://developer.tenable.com/tenableio/docs/get-started](https://developer.tenable.com/tenableio/docs/get-started)
 
 ### Notes:
 
