@@ -1,6 +1,6 @@
-# Andrei Essaoulov's API Doc Writing Samples
+# Andrei Essaoulov's API Doc Samples
 
-## Tenable.io API Documentation Site (current project in progress)
+## Get Started: Tenable Developer Portal
 
 Written for Tenable Security, 2018.
 
@@ -34,7 +34,7 @@ Original URL: [https://help.relativity.com/9.4/Content/Relativity/Analytics/Anal
 
 ### Notes:
 
-- I wrote the content of the page from scratch.
+- I wrote the content from scratch.
 - To get the information, I interviewed the development team members, referenced internal documentation (wiki), and played with the API calls.
 - The document was SME- and peer-reviewed.
 - The development team provided the C# code samples.
