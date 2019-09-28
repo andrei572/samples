@@ -30,6 +30,8 @@ Written for Relativity LLC, 2016.
 
 URL: [https://github.com/andrei572/samples/blob/master/analytics.md](https://github.com/andrei572/samples/blob/master/analytics.md)
 
+Original URL: [https://help.relativity.com/9.4/Content/Relativity/Analytics/Analytics_indexes.htm](https://help.relativity.com/9.4/Content/Relativity/Analytics/Analytics_indexes.htm)
+
 ### Notes:
 
 - I wrote the content of the page from scratch.
