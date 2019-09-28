@@ -1,4 +1,4 @@
-# Relativity Analytics Indexes API
+# Build Relativity Analytics Indexes
 
 Relativity Analytics are enabled by analytics indexes. Analytics indexes define spatial relationships between documents and concepts measured by their distance in a multidimensional space. For background information about Relativity Analytics indexes, see [Relativity Documentation site](https://help.relativity.com/9.4/Content/Relativity/Analytics/Analytics_indexes.htm).
 
