@@ -2,9 +2,9 @@
 
 ## Tenable.io API Documentation Site (current project in progress)
 
-Written for Tenable Security, 2018
+Written for Tenable Security, 2018.
 
-URL: [https://developer.tenable.com/tenableio/docs](URL: https://developer.tenable.com/tenableio/docs)
+URL: [https://developer.tenable.com/tenableio/docs](https://developer.tenable.com/tenableio/docs)
 
 ### Notes:
 
@@ -14,7 +14,7 @@ URL: [https://developer.tenable.com/tenableio/docs](URL: https://developer.tenab
 
 ## Relativity Transfer API Samples
 
-Written for Relativity LLC, 2017
+Written for Relativity LLC, 2017.
 
 URL: [https://github.com/andrei572/transfer-api-samples/blob/master/README.md](https://github.com/andrei572/transfer-api-samples/blob/master/README.md)
 
