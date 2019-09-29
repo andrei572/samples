@@ -99,6 +99,7 @@ To create an index:
       EmailNotificationRecipients = new List<string> { "jsmith@mycompany.com", "jdoe@mycompany.com" },
     };
     ```
+    **Note**: For both TrainingSet and SearchableSet, the Artifact ID value of the SavedSearchRef object can be set to 0 to use the built-in search for all documents in a workspace, or -1 for default training set/default searchable. Setting the values to 0 can have a negative impact on system performance.
 
 4.  Finally, create the index by calling the `CreateAsync()` method of the `IIndexManager` interface, and specify the workspace and the index object:
 
@@ -246,7 +247,7 @@ To create an analytics index from a RESTful application, send a POST request to 
 /Relativity.REST/api/Relativity.Analytics/workspaces/{workspaceArtifactID|workspaceGUID}/indexes
 ```
 
-The request payload must include valid JSON representation of the index object:
+The request body must include a valid JSON representation of the index object:
 
 ```json
 {
