@@ -30,7 +30,7 @@ Written for Relativity LLC, 2016.
 
 URL: [https://github.com/andrei572/samples/blob/master/analytics.md](https://github.com/andrei572/samples/blob/master/analytics.md)
 
-Original URL: [https://help.relativity.com/9.4/Content/Relativity/Analytics/Analytics_indexes.htm](https://platform.relativity.com/9.5/Content/RSAPI/Advanced_operations/Analytics_Index_RSAPI.htm)
+Original URL: [https://platform.relativity.com/9.5/Content/RSAPI/Advanced_operations/Analytics_Index_RSAPI.htm](https://platform.relativity.com/9.5/Content/RSAPI/Advanced_operations/Analytics_Index_RSAPI.htm)
 
 ### Notes:
 
