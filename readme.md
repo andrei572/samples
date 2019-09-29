@@ -1,4 +1,4 @@
-# Andrei Essaoulov's API Doc Samples
+# API Doc Samples
 
 ## Get Started: Tenable Developer Portal
 
@@ -24,7 +24,7 @@ URL: [https://github.com/andrei572/transfer-api-samples/blob/master/README.md](h
 - The document was SME-reviewed.
 - The developer provided the #C code samples.
 
-## Build Analytics indexes
+## Build Relativity Analytics Indexes
 
 Written for Relativity LLC, 2016.
 
@@ -38,3 +38,6 @@ Original URL: [https://platform.relativity.com/9.5/Content/RSAPI/Advanced_operat
 - To get the information, I interviewed the development team members, referenced internal documentation (wiki), and played with the API calls.
 - The document was SME- and peer-reviewed.
 - The development team provided the C# code samples.
+
+# See Also
+Andrei Essaoulov's resume is available here: [https://github.com/andrei572/samples/blob/master/Andrei_Essaoulov_Resume_2019.pdf](https://github.com/andrei572/samples/blob/master/Andrei_Essaoulov_Resume_2019.pdf)
