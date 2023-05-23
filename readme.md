@@ -63,5 +63,4 @@ URL: [https://public.dhe.ibm.com/software/analytics/spss/documentation/cds/6.0/e
 ### Notes:
 
 - I wrote the document in collaboration with multiple developers.
-
 - The document has been peer-reviewed.
