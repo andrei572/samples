@@ -1,20 +1,21 @@
-# Andrei Essaoulov's API Doc Samples
+# Andrei Essaoulov's Writing Samples
 
-## Get Started: Tenable Developer Portal
+## Tenable Developer Portal
 
-Written for Tenable Security, 2018.
+*Written for Tenable Security, 2018.*
 
-URL: [https://developer.tenable.com/tenableio/docs/get-started](https://developer.tenable.com/tenableio/docs/get-started)
+URL: [https://developer.tenable.com/docs](https://developer.tenable.com/docs)
 
 ### Notes:
 
 - I wrote the content of the page from scratch.
 - The document has been peer-reviewed.
 - Tenable developer documentation site is hosted on ReadMe.io platform.
+- The content has been updated since I left Tenable in late 2019.
 
 ## Relativity Transfer API Samples
 
-Written for Relativity LLC, 2017.
+*Written for Relativity LLC, 2017.*
 
 URL: [https://github.com/andrei572/transfer-api-samples/blob/master/README.md](https://github.com/andrei572/transfer-api-samples/blob/master/README.md)
 
@@ -26,7 +27,7 @@ URL: [https://github.com/andrei572/transfer-api-samples/blob/master/README.md](h
 
 ## Build Relativity Analytics Indexes
 
-Written for Relativity LLC, 2016.
+*Written for Relativity LLC, 2016.*
 
 URL: [https://github.com/andrei572/samples/blob/master/analytics.md](https://github.com/andrei572/samples/blob/master/analytics.md)
 
@@ -39,5 +40,28 @@ Original URL: [https://platform.relativity.com/9.5/Content/RSAPI/Advanced_operat
 - The document was SME- and peer-reviewed.
 - The development team provided the C# code samples.
 
-# See Also
-Andrei Essaoulov's resume is available here: [https://github.com/andrei572/samples/blob/master/Andrei_Essaoulov_Resume_2019.pdf](https://github.com/andrei572/samples/blob/master/Andrei_Essaoulov_Resume_2019.pdf)
+## Relativity Secret Store Guide
+
+*Written for Relativity LLC, 2017-2018.*
+
+URL: [https://help.relativity.com/PDFDownloads/9.6_PDF/Relativity%20-%20Secret%20Store%20-%209.6.pdf](https://help.relativity.com/PDFDownloads/9.6_PDF/Relativity%20-%20Secret%20Store%20-%209.6.pdf)
+
+### Notes:
+- I wrote the entire content of the page from scratch.
+- To get the information, I interviewed the development team members, worked with the technical
+product manager and support team, referenced internal documentation (wiki), and stepped
+through the installation process myself.
+- Since I left Relativity, other writers contributed to the content.
+
+
+## IBM SPSS Collaboration and Deployment Services Repository Version 6
+
+*Written for IBM SPSS, 2011-2013.*
+
+URL: [https://public.dhe.ibm.com/software/analytics/spss/documentation/cds/6.0/en/installation_documents/Repository_Server_Installation_and_Configuration_Guide.pdf](https://public.dhe.ibm.com/software/analytics/spss/documentation/cds/6.0/en/installation_documents/Repository_Server_Installation_and_Configuration_Guide.pdf)
+
+### Notes:
+
+- I wrote the document in collaboration with multiple developers.
+
+- The document has been peer-reviewed.
