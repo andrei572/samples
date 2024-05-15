@@ -44,7 +44,7 @@ Original URL: [https://platform.relativity.com/9.5/Content/RSAPI/Advanced_operat
 
 *Written for Relativity LLC, 2017-2018.*
 
-URL: [https://help.relativity.com/PDFDownloads/9.6_PDF/Relativity%20-%20Secret%20Store%20-%209.6.pdf](https://help.relativity.com/PDFDownloads/9.6_PDF/Relativity%20-%20Secret%20Store%20-%209.6.pdf)
+URL: [https://help.relativity.com/PDFDownloads/Server2022_PDF/Relativity%20-%20Secret%20Store.pdf](https://help.relativity.com/PDFDownloads/Server2022_PDF/Relativity%20-%20Secret%20Store.pdf)
 
 ### Notes:
 - I wrote the entire content of the page from scratch.
